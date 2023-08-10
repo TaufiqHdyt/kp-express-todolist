@@ -24,8 +24,8 @@ export const createData = (name, user, completed = false) => {
 
 export const updateData = (name, completed, id) => {
   let updatedAt = new Date();
-  const sql = 'UPDATE tasks SET name = ?, is_completed = ?, updated_at = ? WHERE task_id = ?';
-  const value = [name, completed, updatedAt, id];
+  const sql = 'UPDATE tasks SET task_name = ?, is_completed = ?, updated_at = ? WHERE task_id = ?';
+  const value = [name, completed ? 1 : 0, updatedAt, id];
 
   return dbPool.query(sql, value);
 };
