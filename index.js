@@ -1,10 +1,15 @@
 /*
-    1. Tambahkan endpoint users untuk menghapus dan meakukan update
-        - endpoint delete harus menggunakan method delete
-        - endpoint update harus menggunakan method put
-    2. Buat database tasks dengan kolom sebagai berikut : 
-        task_id, user_id, task_name, is_completed, created_at, updated_at
-    3. Buat endpoint CRUD lengkap untuk table task.
+  1. Tambahkan endpoint users untuk menghapus dan meakukan update
+      - endpoint delete harus menggunakan method delete
+      - endpoint update harus menggunakan method put
+  2. Buat database tasks dengan kolom sebagai berikut : 
+      task_id, user_id, task_name, is_completed, created_at, updated_at
+  3. Buat endpoint CRUD lengkap untuk table task.
+*/
+
+/*
+  1. Ketika login /auth selain memberikan informasi access token dan refresh token. 
+      berikan data user kecuali password.
 */
 
 import expess from 'express';
@@ -30,6 +35,9 @@ app.get('/tasks/:id', TaskService.getTaskById);
 app.post('/tasks', TaskService.createTask);
 app.put('/tasks', TaskService.updateTask);
 app.delete('/tasks/:id', TaskService.deleteTaskById);
+
+// login
+app.post('/auth', UserService.authUser);
 
 app.listen(port, host, () => {
   console.log(`server REST API berlajan di http://${host}:${port}`);
